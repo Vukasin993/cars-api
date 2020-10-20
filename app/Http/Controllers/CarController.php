@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Http\Requests\CreateCarRequest;
+use App\Http\Requests\UpdateCarRequest;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -60,7 +61,7 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Car $car)
+    public function update(UpdateCarRequest $request, $id)
     {
         $car = Car::findOrFail($id);
         $car->update($request->validated());
@@ -73,7 +74,7 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
         $car = Car::findOrFail($id);
         $car->delete();

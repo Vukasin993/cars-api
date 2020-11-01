@@ -27,7 +27,6 @@ class CarController extends Controller
      */
     public function store(CreateCarRequest $request)
     {
-        info('cars store');
         info($request);
         $data = $request->validated();
         $car = Car::create([
@@ -48,7 +47,7 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show($id)
     {
         $car = Car::findOrFail($id);
         return response()->json($car);
@@ -65,7 +64,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->update($request->validated());
-        return $car;
+        return response()->json($car);
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,8 @@ Route::get('/cars/{id}', [CarController::class, 'show']);
 Route::post('/cars', [CarController::class, 'store']);
 Route::put('/cars/{id}', [CarController::class, 'update']);
 Route::delete('/cars/{id}', [CarController::class, 'destroy']);
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/refresh-token', [AuthController::class, 'refreshToken']);
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/register', [AuthController::class, 'register']);
